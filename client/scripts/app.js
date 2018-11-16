@@ -20,7 +20,12 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
+      // console.log(data['results'][0]);
+      var chats = data['results'];
+      var werds = '';
+      chats.forEach(function(chat) {
+        $('#chats').append(chat.username);
+      });
 
       callback();
     });
