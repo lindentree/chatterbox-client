@@ -1,9 +1,18 @@
 var Messages = {
+
+
+
   storage: null,
+
+  ////////////////////////////////////
+  // Sanitization functions
+  ////////////////////////////////////
   sanitizeMsg: function (chat) {
     var message = chat.text;
     if (message === undefined) {
-      return;
+      return 'undefined';
+    } else if (message === null) {
+      return 'null';
     }
     var arr = message.split('');
     var sanitized = [];
@@ -33,7 +42,9 @@ var Messages = {
   sanitizeUsr: function (chat) {
     var user = chat.username;
     if (user === undefined) {
-      return;
+      return 'undefined';
+    } else if (user === null) {
+      return 'null';
     }
     var arr = user.split('');
     var sanitized = [];
@@ -64,6 +75,8 @@ var Messages = {
     var room = chat.roomname;
     if (room === undefined) {
       return 'undefined';
+    } else if (room === null) {
+      return 'null';
     }
     var arr = room.split('');
     var sanitized = [];

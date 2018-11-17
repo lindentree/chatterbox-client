@@ -15,12 +15,11 @@ var RoomsView = {
 
   renderRoom: function (roomname) {
     // var sanitized = Messages.sanitizeRoom(post);
+
     $('#rooms select').append(
       `<option value='${roomname}'>${roomname}</option>`
     );
   },
-
-
 };
 
 RoomsView.$button.on('click', function () {

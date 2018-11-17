@@ -5,11 +5,4 @@ var Rooms = {
     RoomsView.renderRoom(roomname);
     // renderRoom(prompt)
   }
-
-
-
 };
-
-RoomsView.$button.on('click', function () {
-  Rooms.add();
-});
