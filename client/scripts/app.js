@@ -5,14 +5,14 @@ var App = {
 
   initialize: function() {
     App.username = window.location.search.substr(10);
-
-    FormView.initialize();
-    RoomsView.initialize();
-    MessagesView.initialize();
-
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
+
+    FormView.initialize();
+
+    setTimeout(MessagesView.initialize, 400);
+    setTimeout(RoomsView.initialize, 400);
   },
 
   fetch: function(callback = () => {}) {
