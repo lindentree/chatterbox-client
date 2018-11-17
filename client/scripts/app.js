@@ -15,10 +15,10 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
-    $('#chats').find('a').on('click', function () {
-      console.log('ughhhh')
-      alert('it works!')
-    })
+    // $('#chats').find('a').on('click', function () {
+    //   console.log('ughhhh')
+    //   alert('it works!')
+    // })
   },
 
   fetch: function (callback = () => { }) {
