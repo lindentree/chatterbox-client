@@ -1,5 +1,4 @@
 var App = {
-
   $spinner: $('.spinner img'),
 
   username: 'anonymous',
@@ -14,19 +13,14 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-
   },
 
-  fetch: function(callback = ()=>{}) {
-    Parse.readAll((data) => {
+  fetch: function(callback = () => {}) {
+    Parse.readAll(data => {
       // examine the response from the server request:
       // console.log(data['results'][0]);
-      var chats = data['results'];
-      var werds = '';
-      chats.forEach(function(chat) {
-        $('#chats').append(chat.username);
-      });
-
+      Messages.storage = data['results'];
+      console.log(Messages.storage);
       callback();
     });
   },
@@ -41,3 +35,21 @@ var App = {
     FormView.setStatus(false);
   }
 };
+
+'<div class=\'indvChat>' +
+  '<div class=\'username\'>' +
+  '<h3 id=\'user\'>' +
+  '<%= chat.username %$>' +
+  '</h3>' +
+  '</div>' +
+  '<div class=\'message\'>' +
+  '<p>' +
+  '<%= chat.text %>' +
+  '</p>' +
+  '</div>' +
+  '<div class=\'created-at\'>' +
+  '<p>' +
+  '<%= chat.createdAt %>' +
+  '</p>' +
+  '</div>' +
+  '</div>';
