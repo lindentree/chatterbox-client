@@ -16,6 +16,7 @@ var Parse = {
           console.error('chatterbox: Failed to post message', error);
         }
     });
+    console.log('sent to server', message);
   },
 
   readAll: function (successCB, errorCB = null) {
