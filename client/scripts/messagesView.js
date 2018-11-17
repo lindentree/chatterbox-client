@@ -5,6 +5,7 @@ var MessagesView = {
     Messages.storage.forEach(function (post) {
       MessagesView.renderMessage(post);
     });
+
   },
 
   renderMessage: function (allChats) {
@@ -14,30 +15,8 @@ var MessagesView = {
     var date = allChats.createdAt;
     var post = message + username + date;
 
-    this.$chats.append(`<div class='chat'><div class='username'><h3 id='user'><div>${username}</div></h3></div><div class='message'><p>${message}</p></div><div class='created-at'><p>${date}</p></div></div>`);
+    Friends.allUsers[username] = false;
+
+    this.$chats.append(`<div class='chat'><div class='username'><a ><div>${username}</div></a></div><div class='message'><p>${message}</p></div><div class='created-at'><p>${date}</p></div></div>`);
   }
 };
-
-
-
-
-
-    // var compiler = _.template("<p>'helo'</p>"
-    //   // "<div class='chat'>" +
-    //   // "<div class='username'>" +
-    //   // "<h3 id='user'>" +
-    //   // "<div><%= username %$></div>" +
-    //   // "</h3>" +
-    //   // "</div>" +
-    //   // "<div class='message'>" +
-    //   // "<p>" +
-    //   // "<%= message %>" +
-    //   // "</p>" +
-    //   // "</div>" +
-    //   // "<div class='created-at'>" +
-    //   // "<p>" +
-    //   // "<%= date %>" +
-    //   // "</p>" +
-    //   // "</div>" +
-    //   // "</div>"
-    // );

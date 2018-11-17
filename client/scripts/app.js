@@ -3,7 +3,7 @@ var App = {
 
   username: 'anonymous',
 
-  initialize: function() {
+  initialize: function () {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
@@ -14,9 +14,14 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
+
+    $('#chats').find('a').on('click', function () {
+      console.log('ughhhh')
+      alert('it works!')
+    })
   },
 
-  fetch: function(callback = () => {}) {
+  fetch: function (callback = () => { }) {
     Parse.readAll(data => {
       // examine the response from the server request:
       // console.log(data['results'][0]);
@@ -26,31 +31,14 @@ var App = {
     });
   },
 
-  startSpinner: function() {
+  startSpinner: function () {
     App.$spinner.show();
     FormView.setStatus(true);
   },
 
-  stopSpinner: function() {
+  stopSpinner: function () {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
-  }
-};
+  },
 
-'<div class=\'indvChat>' +
-  '<div class=\'username\'>' +
-  '<h3 id=\'user\'>' +
-  '<%= chat.username %$>' +
-  '</h3>' +
-  '</div>' +
-  '<div class=\'message\'>' +
-  '<p>' +
-  '<%= chat.text %>' +
-  '</p>' +
-  '</div>' +
-  '<div class=\'created-at\'>' +
-  '<p>' +
-  '<%= chat.createdAt %>' +
-  '</p>' +
-  '</div>' +
-  '</div>';
+};
