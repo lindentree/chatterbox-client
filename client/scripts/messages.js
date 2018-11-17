@@ -1,11 +1,14 @@
 var Messages = {
   storage: null,
-  sanitizeMsg: function(chat) {
+  sanitizeMsg: function (chat) {
     var message = chat.text;
+    if (message === undefined) {
+      return;
+    }
     var arr = message.split('');
     var sanitized = [];
 
-    arr.forEach(function(letter) {
+    arr.forEach(function (letter) {
       if (letter === '<') {
         sanitized.push('&lt; nice try');
       } else if (letter === '>') {
@@ -27,12 +30,15 @@ var Messages = {
 
     return sanitized.join('');
   },
-  sanitizeUsr: function(chat) {
+  sanitizeUsr: function (chat) {
     var user = chat.username;
+    if (user === undefined) {
+      return;
+    }
     var arr = user.split('');
     var sanitized = [];
 
-    arr.forEach(function(letter) {
+    arr.forEach(function (letter) {
       if (letter === '<') {
         sanitized.push('&lt; nice try');
       } else if (letter === '>') {
@@ -54,7 +60,7 @@ var Messages = {
 
     return sanitized.join('');
   },
-  sanitizeRoom: function(chat) {
+  sanitizeRoom: function (chat) {
     var room = chat.roomname;
     if (room === undefined) {
       return 'undefined';
@@ -62,7 +68,7 @@ var Messages = {
     var arr = room.split('');
     var sanitized = [];
 
-    arr.forEach(function(letter) {
+    arr.forEach(function (letter) {
       if (letter === '<') {
         sanitized.push('&lt; nice try');
       } else if (letter === '>') {
